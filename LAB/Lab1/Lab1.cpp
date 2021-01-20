@@ -6,8 +6,11 @@
 */
 #include <iostream>
 using namespace std;
+using  std::cout;
+using  std::cin;
 int main()
 {
-	cout << "Hello World";
+	cout << "Hello World" << endl;
+	cout << "Press ENTER to quit";
 	return 0; 
 }
