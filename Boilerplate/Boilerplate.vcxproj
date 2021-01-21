@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d5b9c6c2-d467-4bfb-b605-9b4a9b055ee7}</ProjectGuid>
-    <RootNamespace>Poem</RootNamespace>
+    <ProjectGuid>{ac255f42-536c-402c-a42f-c8da71ed1ca4}</ProjectGuid>
+    <RootNamespace>Boilerplate</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Poem.cpp" />
+    <ClCompile Include="Boilerplate.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
