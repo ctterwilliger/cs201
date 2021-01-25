@@ -29,7 +29,6 @@ int main()
 		cout << "\n";
 	}
 
-	//using modulo if to determine if the potition is even or odd to print alterating text
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 60; j++)
