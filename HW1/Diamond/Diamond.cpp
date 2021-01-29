@@ -10,6 +10,7 @@ using namespace std;
 using std::cin;
 int main()
 {
+	// Get Diamond Size from user
 	int loop = 0;
 	cout << "Please Enter a Positive Integer\n";
 	cin >> loop;
@@ -18,6 +19,7 @@ int main()
 		cout  << "Your Integer must be positive\n"; 
 		cin >> loop;
 	}
+	//prints top half of diamond
 	for (int i= 0; i < loop; i++)
 	{
 		for (int k = 0; k < loop - i; k++)
@@ -30,6 +32,7 @@ int main()
 		}
 		cout << "\n";
 	}
+	// Prints bottom half
 	for (int i = 0; i < loop; i++)
 	{
 		for (int k = 0; k < i + 2; k++)
@@ -42,6 +45,7 @@ int main()
 		}
 		cout << "\n";
 	}
+	//exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
 	return 0;
