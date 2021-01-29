@@ -9,7 +9,7 @@
 #include <iomanip>
 using namespace std;
 using std::cin;
-
+// a function to find the length of a floating point before the decimal
 int length_int(float temp)
 {
 	int length = 0;
@@ -22,6 +22,7 @@ int length_int(float temp)
 }
 int main()
 {
+	//initilizes varibles then asks user for input
 	float A_x;
 	float A_y;
 	float A_z;
@@ -41,9 +42,11 @@ int main()
 	cin >> B_y;
 	cout << "Vector 2 z compontent: ";
 	cin >> B_z;
+	//computes then prints the dot product to the 5th decimal point
 	float dot = (A_x * B_x) + (A_y * B_y) + (A_z * B_z);
 	cout << "Vector 1 dot Vector 2 = "
 	 	 << std::setprecision(5+length_int(dot)) << dot << '\n';
+	//compute then prints the cross product to the 5th decimal point
 	float C_x = (A_y * B_z) - (A_z * B_y);
 	float C_y = (A_z * B_x) - (A_x * B_z);
 	float C_z = (A_x * B_y) - (A_y * B_x);
