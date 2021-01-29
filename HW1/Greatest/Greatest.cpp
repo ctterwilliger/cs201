@@ -12,14 +12,15 @@ int main()
 {
 	int number = 0;
 	int greatest = 0;
+	cout << "Enter a sequence of positive integers, ending with zero\nI will print the greatest positive number entered\n";
 	do
 	{
-		cout << "Enter a sequence of positive integers, ending with zero\nI will print the greatest positive number entered\n"
-		cout  << "Please Enter An Integer\n";
+		cout  << "Enter a positive integer (0 to end): ";
 		cin >> number; 
 		while (number < 0)
 		{
-			cout << "Your Imput Is not a Positive Integer";
+			cout << "Your imput Is not a positive integer\n";
+			cout << "Enter a positive integer (0 to end): ";
 			cin >> number;
 		}
 		if (number > greatest)
@@ -27,9 +28,9 @@ int main()
 			greatest = number;
 		}
 	} while (number != 0);
-	cout << greatest; 
+	cout << "\n The greatest number entered: " << greatest; 
 	//Exit code
-	cout << "Press ENTER to quit";
+	cout << "\nPress ENTER to quit";
 	while (cin.get() != '\n');
 	return 0;
 }
