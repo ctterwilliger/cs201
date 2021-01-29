@@ -62,9 +62,9 @@ int main()
 
 	cout << "Program 3\n";
 	//using modulo if to determine if the potition is even or odd to print alterating text
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < box_h; i++)
 	{
-		for (int j = 0; j < 60; j++)
+		for (int j = 0; j < box_w; j++)
 		{
 			if ((i + j) % 2 == 0) 
 			{
