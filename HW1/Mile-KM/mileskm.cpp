@@ -10,10 +10,13 @@ using namespace std;
 using std::cin;
 int main()
 {
+	// takes user input
 	cout << "This program convers miles to kilometers\nPlease enter a the number you would like to convert from miles to kilometers: ";
 	float miles;
 	cin >> miles; 
 	float km = miles * 1.609;
+
+	//prints conversion
 	cout << miles << " mile(s) is equivelent to " << km << " kilometer(s)\n";
 	//Exit code
 	cout << "Press ENTER to quit ";
