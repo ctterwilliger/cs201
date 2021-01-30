@@ -51,34 +51,40 @@ int main()
 	int x_pos = 0;
 	int y_pos = 0;
 	int x = 1;
-	int y = 1;
 	cout << "This program will let you make a grid\n";
 	std::vector<std::vector<int>> grid;
-	x = get_positive_int("Please enter the width of the grid: ");
-	y = get_positive_int("Please enter the hieght of the grid: ");
+	x = get_positive_int("Please enter the size of the grid: ");
 
 	//sizes grid so there are no memory errors
 	grid.resize(x);
 	for (int i = 0; i < x; i++)
 	{
-		grid[i].resize(y);
+		grid[i].resize(x);
 	}
 
 	//loops grid draw and user input until user inputs negative number
 	do
 	{
 		//prints grid
-		for (int i = 0; i < y; i++)
+		cout << "  ";
+		for (int i = 1; i <= x; i++) 
 		{
+			cout << i << " ";
+		}
+		cout << "\n";
+		for (int i = 1; i <= x; i++)
+		{
+			cout << i << " ";
 			for (int j = 0; j < x; j++)
 			{
-				if (grid[j][i] == 1)
+				
+				if (grid[j][i-1] == 1)
 				{
-					cout << "x";
+					cout << "x ";
 				}
 				else
 				{
-					cout << ".";
+					cout << ". ";
 				}
 			}
 			cout << "\n";
@@ -86,7 +92,7 @@ int main()
 
 		//gets user input for x postion and then places it
 		cout << "Choose a position to place an x\n";
-		y_pos = get_position("Please enter a row(negative number to end): ", y);
+		y_pos = get_position("Please enter a row(negative number to end): ", x);
 		if (y_pos < 0)
 		{
 			break;
@@ -102,5 +108,5 @@ int main()
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
-	return 0;
+	return 0;  
 }
