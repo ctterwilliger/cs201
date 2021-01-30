@@ -31,7 +31,14 @@ int main()
 			greatest = number;
 		}
 	} while (number != 0);
-	cout << "\n The greatest number entered: " << greatest; 
+	if (greatest == 0)
+	{
+		cout << "No positive integers were entered";
+	}
+	else
+	{
+		cout << "\n The greatest number entered: " << greatest;
+	}
 	//Exit code
 	cout << "\nPress ENTER to quit";
 	while (cin.get() != '\n');
