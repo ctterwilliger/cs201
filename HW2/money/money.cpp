@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* money.ccp
 * cs201
 * Clifton Terwilliger
 * 1/29/2021
-* name
+* Calculates money
 */
 
 #include <iostream>
@@ -11,6 +11,7 @@
 using namespace std;
 using std::cin;
 
+//gets user input for positive int
 int input(std::string text)
 {
 	int i =  0;
@@ -24,6 +25,7 @@ int input(std::string text)
 	return i;
  }
 
+// prints coin value and plural
 void print_coin(std::string text, int i, std::string text_2)
 {
 	cout << text << i << text_2;
@@ -34,6 +36,7 @@ void print_coin(std::string text, int i, std::string text_2)
 	cout << "\n";
 }
 
+//print coin value  and plural for ies
 void print_coin_alt_plur(std::string text, int i, std::string text_2)
 {
 	cout << text << i << text_2;
