@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* rice.ccp
 * cs201
 * Clifton Terwilliger
 * 1/29/2021
-* name
+* double 64 times
 */
 
 #include <iostream>
