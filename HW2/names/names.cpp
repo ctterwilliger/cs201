@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* names.ccp
 * cs201
 * Clifton Terwilliger
-* 1/29/2021
-* name
+* 2/08/2021
+* names
 */
 
 #include <iostream>
@@ -12,6 +12,7 @@
 using namespace std;
 using std::cin;
 
+//Ask user for 10 names and assigns said names to vector
 void InputNames(std::vector<std::string> & names)
 {
 	for (int i = 0; i < 10; i++)
@@ -23,6 +24,7 @@ void InputNames(std::vector<std::string> & names)
 	}
 }
 
+//prints entire string vector
 void print(std::vector<std::string> print)
 {
 	for (int i = 0; i < print.size(); i++)
@@ -31,6 +33,7 @@ void print(std::vector<std::string> print)
 	}
 }
 
+// compares string with an array of strings, returns true if array contains it
 bool find_string(std::vector<std::string> string, std::string search)
 {
 	for (int i = 0; i < string.size(); i++)
@@ -43,6 +46,7 @@ bool find_string(std::vector<std::string> string, std::string search)
 	return false; 
 }
 
+// takes vector of strings and adds a value to the char to cipher it. 
 void cipher_string(std::vector< std::string> & cipher)
 {
 	for (int i = 0; i < cipher.size(); i++)
@@ -60,7 +64,9 @@ int main()
 	InputNames(name);
 	print(name);
 	std::string search; 
-	std::getline(cin, search);
+
+	//prints true or false based on if user input is in vector
+	std::getline(cin, search); 
 	if (find_string(name, search) == true)
 	{
 		cout << "the string was inputed\n";
@@ -69,6 +75,7 @@ int main()
 	{
 		cout << "The string was not inputed\n";
 	}
+	//creates cipher vector and prints it
 	std::vector<std::string> cipher; 
 	cipher = name; 
 	cipher_string(cipher);
