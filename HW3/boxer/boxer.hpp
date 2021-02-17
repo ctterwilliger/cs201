@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* boxer.hpp
 * cs201
 * Clifton Terwilliger
-* 02/00/2021
-* name
+* 02/17/2021
+* header file for boxer.cpp
 */
 #ifndef FILE_BOXER_HPP_INCLUDED
 #define FILE_BOXER_HPP_INCLUDED
