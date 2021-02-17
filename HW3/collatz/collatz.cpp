@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* collatz.ccp
 * cs201
 * Clifton Terwilliger
-* 02/00/2021
-* name
+* 02/17/2021
+* Runs collatz program from user inputed integer until result equals 1, prints relults along the way
 */
 
 #include <iostream>
@@ -27,14 +27,18 @@ int get_int()
 
 int main()
 {
+	//initalizes program
 	cout << "This progrm run the Colltz function until it reaches 1\n";
 	int i = get_int();
+	// runs user input and collatz program until broken by 0
 	do
 	{
+		//checks for 0
 		if (i == 0)
 		{
 			break; 
 		}
+		//run collatz program until result equals 1
 		cout << i << " ";
 		while (i != 1)
 		{
@@ -51,6 +55,7 @@ int main()
 		cout << "\n";
 		i = get_int();
 	} while (true == true);
+
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
