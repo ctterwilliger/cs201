@@ -13,15 +13,20 @@ using namespace std;
 using std::cin;
 int main()
 {
-	int i; 
+	int box_width; 
 	std::string text;
 
 	cout << text; 
 	do
 	{
-		i = get_int();
-		text = get_string()
-	} while;
+		text = get_string();
+		if (text == "end")
+		{
+			break;
+		}
+		box_width = get_int();
+		print(box_width, text);
+	} while(true == true);
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');

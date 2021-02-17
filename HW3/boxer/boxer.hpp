@@ -22,4 +22,6 @@ int get_int();
 //      std::string text;
 //      text = get_string; 
 std::string get_string();
+
+void print();
 #endif
