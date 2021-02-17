@@ -27,12 +27,30 @@ int get_int()
 
 int main()
 {
-	int i;
+	cout << "This progrm run the Colltz function until it reaches 1\n";
+	int i = get_int();
 	do
 	{
-		i = get_int
-	}
-	while(i != 0)
+		if (i == 0)
+		{
+			break; 
+		}
+		cout << i << " ";
+		while (i != 1)
+		{
+			if (i % 2 == 0)
+			{
+				i = i / 2;
+			}
+			else
+			{
+				i = 3*i + 1;
+			}
+			cout << i << " ";
+		}
+		cout << "\n";
+		i = get_int();
+	} while (true == true);
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
