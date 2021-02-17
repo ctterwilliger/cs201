@@ -23,5 +23,10 @@ int get_int();
 //      text = get_string; 
 std::string get_string();
 
+
+//print
+//print a box around a word with width of inputed integer 
+//Sample Usage:
+//		print(int, string);
 void print(int box_width, std::string text);
 #endif
