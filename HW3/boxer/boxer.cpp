@@ -7,6 +7,7 @@
 */
 
 #include <iostream>
+#include <string>
 using namespace std;
 using std::cin;
 
@@ -21,4 +22,12 @@ int get_int()
 		cin >> i;
 	}
 	return i; 
+}
+
+std::string get_string()
+{
+	std::string text;
+	cout << "Please enter a word: ";
+	cin >> text; 
+	return text; 
 }
