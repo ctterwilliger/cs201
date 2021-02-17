@@ -36,20 +36,36 @@ void print_box_top(int box_width, std::string text)
 {
 	for (int i = 0; i < box_width; i++)
 	{
-		for (int j = 0; j < text.size() + 6; j++)
+		for (int j = 0; j < text.size() + 6 + box_width; j++)
 		{
 			cout << "*";
 		}
 		cout << '\n';
 	}
 }
-void print(int box_width, std::string text)
+
+void print_box_wall(int box_width, std::string text)
 {
-	print_box_top
-	cout << "*";
-	for int(int i = 0; i < text.size() + 4; i++)
+	for (int i = 0; i < box_width; i++)
+	{
+		cout << "*";
+	}
+	for (int i = 0; i < text.size() + 4; i++)
 	{
 		cout << " ";
 	}
-	cout <<"*"
+	for (int i = 0; i < box_width; i++)
+	{
+		cout << "*";
+	}
+	cout << "\n";
+}
+void print(int box_width, std::string text)
+{
+	print_box_top(box_width, text);
+	print_box_wall(box_width, text);
+	
+	for(int i = 0; i)
+	print_box_wall(box_width, text);
+	print_box_top(box_width, text);
 }

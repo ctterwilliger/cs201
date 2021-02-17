@@ -23,5 +23,5 @@ int get_int();
 //      text = get_string; 
 std::string get_string();
 
-void print();
+void print(int box_width, std::string text);
 #endif
