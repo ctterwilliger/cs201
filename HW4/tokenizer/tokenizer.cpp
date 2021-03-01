@@ -34,6 +34,41 @@ unsigned StringToToken(const std::string& input, std::vector<std::string>& token
 	for (auto n : token)
 	{
 		tokens.push_back(n);
+		tokens.push_back(" ");
 	}
 	return token.size();
 }
+
+bool isint(std::string string)
+{
+	for (auto n : string)
+	{
+		if (isdigit(n) == false)
+		{
+			return false;
+		}
+	}
+	return true; 
+}
+
+void AnaylyzeTokens(const std::vector<std::string>& tokens)
+{
+	int type;
+	for (auto n : tokens)
+	{
+		if (n.front() == 34 && n.back() == 34)
+		{
+			type = 1;
+		}
+		else if(n == "")
+		{
+			type = 2;
+		}
+		else if (isint(n))
+		{
+			type = 3;
+		}
+		else if 
+	}
+}
+
