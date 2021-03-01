@@ -50,6 +50,17 @@ bool isint(std::string string)
 	}
 	return true; 
 }
+bool isidenifier(std::string string)
+{
+	if (string.front() == '_')
+	{
+		if (string.at(1) == '_' || (string.at(1) < 123 && string.at(1) > 96) || (string.at(1) < 91 && string.at(1) > 65) || isdigit(string.at(1)))
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 void AnaylyzeTokens(const std::vector<std::string>& tokens)
 {
