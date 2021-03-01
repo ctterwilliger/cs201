@@ -14,8 +14,8 @@ using std::cin;
 bool Readline(std::string & str)
 {
 	std::string text;
-	text = std::getline();
-	if (text = "")
+	std::getline(std::cin, text);
+	if (text == "")
 	{
 		return false;
 	}
