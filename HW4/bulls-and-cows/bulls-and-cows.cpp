@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* bulls-and-cows.ccp
 * cs201
 * Clifton Terwilliger
-* 03/00/2021
-* name
+* 03/01/2021
+* Plays the game of cows and bulls
 */
 
 #include <iostream>
@@ -11,7 +11,7 @@
 #include <string>
 using namespace std;
 using std::cin;
-
+//gets string guess from user
 bool get_guess(std::string & guess)
 {
 	std::string text; 
@@ -19,10 +19,12 @@ bool get_guess(std::string & guess)
 	cin >> text; 
 	do
 	{ 
+		// checks for negativity
 		if (text[0] == '-')
 		{
 			return false;
 		}
+		// checks if the first 4 are digits
 		if (isdigit(text[0]) && isdigit(text[1]) && isdigit(text[2]) && isdigit(text[3]))
 		{
 			guess = text;
@@ -36,6 +38,7 @@ bool get_guess(std::string & guess)
 	
 }
 
+// checks for cows
 bool cow_check(std::vector<char> sol, std::string guess, int i)
 {
 	for (int j = 0; j < 4; j++)
@@ -54,6 +57,7 @@ int main()
 	std::string guess; 
 	int bulls; 
 	int cows;
+	//runs until negative input or player wins
 	while (get_guess(guess))
 	{
 		cows = 0;
@@ -69,6 +73,8 @@ int main()
 				cows++;
 			}
 		}
+
+		//checks for win
 		if (bulls == 4)
 		{
 			cout << "you guessed correctly, you win" << endl;
@@ -77,6 +83,8 @@ int main()
 		cout << "You guess had: " << cows << " cows and " << bulls << " bulls" << endl; 
 	}
 	cout << "The solution was: ";
+
+	//prints solution
 	for (auto n : solution)
 	{
 		cout << n; 
