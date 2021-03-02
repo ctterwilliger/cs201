@@ -19,7 +19,7 @@ bool get_guess(std::string & guess)
 	cin >> text; 
 	do
 	{ 
-		if (text[0] == "-")
+		if (text[0] == '-')
 		{
 			return false;
 		}
@@ -31,14 +31,45 @@ bool get_guess(std::string & guess)
 		cout << "Your number was not a 4 digit number" << endl;
 		cout << "Please enter a 4 digit guess(negative numbers to give up): ";
 		cin >> text;
+		
 	} while (true); 
 	
 }
 
+bool cow_check(std::vector<char> sol, std::string guess, int i)
+{
+	for (int j = 0; j < 4; i++)
+	{
+		if (guess.at(i) == sol.at(j)
+		{
+			return true;
+		}
+	}
+	return false; 
+}
+
 int main()
 {
-	std::vector<std::string> solution {"5" , "7", "8", "2"}
-	get
+	std::vector<char> solution{ '5' , '7', '8', '2' };
+	std::string guess; 
+	int bulls; 
+	int cows;
+	while (get_guess(guess)
+	{
+		cows = 0;
+		bulls = 0;
+		for (int i; i < guess.size(i++)
+		{
+			if (guess.at(i) == solution.at(i))
+			{
+				bulls++
+			}
+			else if(guess.at(i) == )
+			{
+
+			}
+		}
+	}
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
