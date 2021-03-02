@@ -16,14 +16,17 @@ int main()
 {
 	int size;
 	std::string string;
-	Readline(string);
 	std::vector<std::string> tokens;
-	cout << string << endl; 
-	size = StringToToken(string, tokens);
-	for (int i = 0; i < tokens.size(); i++)
+	while(true)
 	{
-		cout << tokens.at(i) << endl; 
+		Readline(string);
+		size = StringToToken(string, tokens);
+		if (tokens.at(tokens.size() - 2 ) == "end" || tokens.at(tokens.size() - 2) == "End" || tokens.at(tokens.size() - 2) == "END")
+		{
+			break;
+		}
 	}
+
 	AnalyzeTokens(tokens);
 	//Exit code
 	cout << "Press ENTER to quit ";
