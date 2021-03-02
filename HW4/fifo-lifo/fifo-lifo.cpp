@@ -70,6 +70,38 @@ unsigned StringToToken(const std::string& input, std::vector<std::string>& token
 	return token.size();
 }
 
+bool fifo_check(std::vector<std::string> compare, std::vector<std::string> pop)
+{
+	if (compare.size() != pop.size())
+	{
+		return false;
+	}
+	for (int i = 0; i < compare.size(); i++)
+	{
+		if (compare.at(i) != pop.at(i))
+		{
+			return false; 
+		}
+	}
+	return true; 
+}
+
+bool lifo_check(std::vector<std::string> compare, std::vector<std::string> pop)
+{
+	if (compare.size() != pop.size())
+	{
+		return false;
+	}
+	for (int i = 0; i < compare.size(); i++)
+	{
+		if (compare.at(i) != pop.at(pop.size() - i - 1))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 int main()
 {
 	std::vector<std::string> pop;
@@ -79,6 +111,8 @@ int main()
 	StringToToken(text, container);
 	std::vector<std::string> container2;
 	container2 = container;
+	std::vector<std::string> container_save;
+	container_save = container;
 	pop = {};
 	while (!(IscontainerEmpty(container)))
 	{
@@ -86,10 +120,16 @@ int main()
 		printContainer(container); 
 		cout << endl; 
 	}
-	for (auto n : pop)
+
+	if (lifo_check(container_save, pop))
 	{
-		cout << n << " ";
+		cout << "Lifo ran correctly" << endl;
 	}
+	else
+	{
+		cout << "Lifo failed" << endl;
+	}
+
 	pop = {};
 	while (!(IscontainerEmpty(container2)))
 	{
@@ -97,10 +137,15 @@ int main()
 		printContainer(container2);
 		cout << endl;
 	}
-	for (auto n : pop)
+	if (fifo_check(container_save, pop))
 	{
-		cout << n << " ";
+		cout << "Fifo ran correctly" << endl;
 	}
+	else
+	{
+		cout << "Fifo failed" << endl; 
+	}
+
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
