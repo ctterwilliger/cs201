@@ -24,6 +24,7 @@ bool IscontainerEmpty(std::vector<std::string> text)
 
 void printContainer(std::vector<std::string> contain)
 {
+	cout << endl << "The container is now: ";
 	for (auto n : contain)
 	{
 		cout << n << " "; 
@@ -39,6 +40,19 @@ void lifo(std::vector<std::string> & text, std::vector<std::string> & pop)
 		placeholder.push_back(text.at(i));
 	}
 	text = placeholder; 
+
+}
+
+void fifo(std::vector<std::string>& text, std::vector<std::string>& pop)
+{
+	pop.push_back(text.front());
+	cout << text.front() << " is being popped out" << endl;
+	std::vector<std::string> placeholder;
+	for (int i = 1; i < text.size(); i++)
+	{
+		placeholder.push_back(text.at(i));
+	}
+	text = placeholder;
 
 }
 
@@ -63,13 +77,25 @@ int main()
 	std::string text; 
 	std::getline(std::cin, text);
 	StringToToken(text, container);
+	std::vector<std::string> container2;
+	container2 = container;
 	pop = {};
 	while (!(IscontainerEmpty(container)))
 	{
 		lifo(container, pop);
-		cout << endl << "The container is now: ";
 		printContainer(container); 
 		cout << endl; 
+	}
+	for (auto n : pop)
+	{
+		cout << n << " ";
+	}
+	pop = {};
+	while (!(IscontainerEmpty(container2)))
+	{
+		fifo(container2, pop);
+		printContainer(container2);
+		cout << endl;
 	}
 	for (auto n : pop)
 	{
