@@ -107,6 +107,7 @@ int main()
 	std::vector<std::string> pop;
 	std::vector<std::string> container;
 	std::string text; 
+	cout << "Please enter a line of words you would like to test LIFO and FIFO on" << endl; 
 	std::getline(std::cin, text);
 	StringToToken(text, container);
 	std::vector<std::string> container2;
