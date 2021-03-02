@@ -52,34 +52,39 @@ bool isint(std::string string)
 }
 bool isidenifier(std::string string)
 {
-	if (string.front() == '_')
-	{
-		if (string.at(1) == '_' || (string.at(1) < 123 && string.at(1) > 96) || (string.at(1) < 91 && string.at(1) > 65) || isdigit(string.at(1)))
+
+		if (string.at(0) == '_' || (string.at(0) < 123 && string.at(0) > 96) || (string.at(0) < 91 && string.at(0) > 65) || isdigit(string.at(0)))
 		{
 			return true;
 		}
-	}
 	return false;
 }
 
-void AnaylyzeTokens(const std::vector<std::string>& tokens)
+void AnalyzeTokens(const std::vector<std::string>& tokens)
 {
 	int type;
 	for (auto n : tokens)
 	{
 		if (n.front() == 34 && n.back() == 34)
 		{
-			type = 1;
+			cout << "[identifier]     " << n << endl;
 		}
-		else if(n == "")
+		else if(n == " ")
 		{
-			type = 2;
+			cout << "[whitespace]     " << "\"\ \"" << endl;
 		}
 		else if (isint(n))
 		{
-			type = 3;
+			cout << "[integer]        " << n << endl;
 		}
-		else if 
+		else if (isidenifier(n))
+		{
+			cout << "[identifier]     " << n << endl;
+		}
+		else
+		{
+			cout << "[unknown]        " << n << endl;
+		}
 	}
 }
 

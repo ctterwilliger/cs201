@@ -24,6 +24,7 @@ int main()
 	{
 		cout << tokens.at(i) << endl; 
 	}
+	AnalyzeTokens(tokens);
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');

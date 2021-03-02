@@ -27,6 +27,6 @@ bool Readline(std::string& str);
 unsigned StringToToken(const std::string& input, std::vector<std::string> & tokens);
 
 
-
+void AnalyzeTokens(const std::vector<std::string>& tokens);
 
 #endif
