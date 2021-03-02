@@ -20,36 +20,32 @@ bool IscontainerEmpty(std::string text)
 	}
 	return false; 
 }
-void lifo(std::string text, std::vector<char> & pop)
+
+void printContainer(std::vector<std::string> contain)
 {
-	pop = {}; 
-	if (IscontainerEmpty(text))
+	for (auto n : contain)
 	{
-
-	}
-	else
-	{
-		for (int i = 0; i < text.size(); i++)
-		{
-
-			pop.push_back(text[i]);
-			cout << "out pops " << text[i] << " container is now ";
-			for (int j = 0; j + i + 1 < text.size(); j++)
-			{
-				cout << text.at(j);
-			}
-			cout << endl;
-		}
+		cout << n; 
 	}
 }
+void lifo(std::string text, std::vector<std::string> & pop)
+{
+
+	
+}
+
 
 
 int main()
 {
-	std::vector<char> pop;
-	std::string text;
+	std::vector<std::string> pop;
+	std::vector<std::string> container;
 	cin >> text; 
-	lifo(text, pop);
+	pop = {};
+	while (!(IscontainerEmpty(string)))
+	{
+		lifo(text, pop);
+	}
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
