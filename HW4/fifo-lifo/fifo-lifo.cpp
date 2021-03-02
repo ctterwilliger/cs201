@@ -11,19 +11,35 @@
 #include <string>
 using namespace std;
 using std::cin;
+
+bool IscontainerEmpty(std::string text)
+{
+	if (text == "\0")
+	{
+		return true;
+	}
+	return false; 
+}
 void lifo(std::string text, std::vector<char> & pop)
 {
 	pop = {}; 
-	for (int i = 0; i < text.size(); i++)
+	if (IscontainerEmpty(text))
 	{
-		
-		pop.push_back(text[i]);
-		cout << "out pops " << text[i] << " container is now ";
-		for (int j = 0; j + i + 1 < text.size(); j++)
+
+	}
+	else
+	{
+		for (int i = 0; i < text.size(); i++)
 		{
-			cout << text.at(j);
+
+			pop.push_back(text[i]);
+			cout << "out pops " << text[i] << " container is now ";
+			for (int j = 0; j + i + 1 < text.size(); j++)
+			{
+				cout << text.at(j);
+			}
+			cout << endl;
 		}
-		cout << endl; 
 	}
 }
 
