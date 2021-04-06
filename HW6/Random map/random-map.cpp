@@ -22,6 +22,12 @@ int RandomBetweenN(int first, int last)
 	return normal_dist(e2);
 }
 
+int Randombetween(int first, int last)
+{
+	return (rand() % last) + first; 
+}
+
+
 int main()
 {
 	srand(time(NULL));
