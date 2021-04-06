@@ -13,6 +13,15 @@ int RandomBetweenU(int first, int last)
 	return distrib(e1);
 }
 
+int RandomBetweenN(int first, int last)
+{
+	std::random_device r;
+	std::seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
+	std::mt19937 e2(seed2);
+	std::normal_distribution<> normal_dist(first, last);
+	return normal_dist(e2);
+}
+
 int main()
 {
 	srand(time(NULL));
@@ -24,9 +33,7 @@ int main()
 	int mean = uniform_dist(e1);
 	std::cout << "Randomly-chosen mean: " << mean << '\n';
 	// Generate a normal distribution around that mean
-	std::seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
-	std::mt19937 e2(seed2);
-	std::normal_distribution<> normal_dist(mean, 2);
+	
 	std::map<int, int> hist;
 	for (int n = 0; n < 10000; ++n) {
 		++hist[std::round(normal_dist(e2))];
