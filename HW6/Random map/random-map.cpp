@@ -27,6 +27,17 @@ int Randombetween(int first, int last)
 	return (rand() % last) + first; 
 }
 
+void PrintDistribution(const std::map<int, int> & numbers)
+{
+	int map_size = numbers.size();
+	int map_range = 0;
+	for (const auto & p : numbers)
+	{
+		std::cout << std::fixed << std::setprecision(1) << std::setw(2)
+			<< p.first << ' ' << std::string(p.second / (map_size/6), '*') << '\n';
+	}
+}
+
 
 int main()
 {
@@ -40,7 +51,7 @@ int main()
 	std::cout << "Randomly-chosen mean: " << mean << '\n';
 	// Generate a normal distribution around that mean
 	
-	std::map<int, int> hist;
+	/*std::map<int, int> hist;
 	for (int n = 0; n < 10000; ++n) {
 		++hist[std::round(normal_dist(e2))];
 	}
@@ -49,4 +60,6 @@ int main()
 		std::cout << std::fixed << std::setprecision(1) << std::setw(2)
 			<< p.first << ' ' << std::string(p.second / 200, '*') << '\n';
 	}
+	*/
+
 }
