@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* fifi-lifo.ccp
 * cs201
 * Clifton Terwilliger
-* 03/00/2021
-* name
+* 03/01/2021
+* FIFO & LIFO
 */
 
 #include <iostream>
@@ -104,6 +104,7 @@ bool lifo_check(std::vector<std::string> compare, std::vector<std::string> pop)
 
 int main()
 {
+	//initalizes varibles
 	std::vector<std::string> pop;
 	std::vector<std::string> container;
 	std::string text; 
@@ -115,6 +116,7 @@ int main()
 	std::vector<std::string> container_save;
 	container_save = container;
 	pop = {};
+	// runs lifo until there are 0 elements
 	while (!(IscontainerEmpty(container)))
 	{
 		lifo(container, pop);
@@ -122,6 +124,7 @@ int main()
 		cout << endl; 
 	}
 
+	//checks lifo
 	if (lifo_check(container_save, pop))
 	{
 		cout << "Lifo ran correctly" << endl;
@@ -132,12 +135,15 @@ int main()
 	}
 
 	pop = {};
+	//run fifo until 0 elements
 	while (!(IscontainerEmpty(container2)))
 	{
 		fifo(container2, pop);
 		printContainer(container2);
 		cout << endl;
 	}
+
+	//checks fifo
 	if (fifo_check(container_save, pop))
 	{
 		cout << "Fifo ran correctly" << endl;
