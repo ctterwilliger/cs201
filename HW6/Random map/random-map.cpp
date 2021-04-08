@@ -1,3 +1,11 @@
+/**
+* random-map.ccp
+* cs201
+* Clifton Terwilliger
+* 04/06/2021
+* Randomly generates a map, and prints distribution
+*/
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -5,6 +13,7 @@
 #include <random>
 #include <cmath>
 
+//Return a Uniformly Random number
 int RandomBetweenU(int first, int last)
 {
 	std::random_device r;
@@ -13,6 +22,7 @@ int RandomBetweenU(int first, int last)
 	return distrib(e1);
 }
 
+//Returns a number that is uniformly distrubted around a the midpoint of a the range inputed.
 int RandomBetweenN(int first, int last)
 {
 	std::random_device r;
@@ -29,11 +39,13 @@ int RandomBetweenN(int first, int last)
 	return i;
 }
 
+//returns a number using rand
 int RandomBetween(int first, int last)
 {
 	return (rand() % last) + first; 
 }
 
+//Prints the distrbution of a map with values
 void PrintDistribution(const std::map<int, int> & numbers)
 {
 	int map_range = numbers.size();
@@ -45,6 +57,7 @@ void PrintDistribution(const std::map<int, int> & numbers)
 	}
 	for (const auto & p : numbers)
 	{
+		//prints a the key and the associted number of *s so that the average is 50 per line
 		std::cout << std::fixed << std::setprecision(1) << std::setw(2)
 			<< p.first << ' ' << std::string(p.second / (map_size/(map_range * print_average_bar_length)), '*') << '\n';
 	}
@@ -57,43 +70,27 @@ int main()
 	std::map<int, int> HistU;
 	for (int i = 0; i < 1'00'000; i++)
 	{
+		//adds one to a random key from 1-6
 		HistU[RandomBetweenU(1, 6)]++;
 
 	}
 	std::map<int, int> HistN;
 	for (int i = 0; i < 1'00'000; i++)
 	{
+		//adds one to a random key from 1-6
 		HistN[RandomBetweenN(1, 6)]++;
 	}
 	std::map<int, int> HistR;
 	for (int i = 0; i < 1'00'000; i++)
 	{
+		//adds one to a random key from 1-6
 		HistR[RandomBetween(1, 6)]++;
 	}
-
+	//Prints results
+	std::cout << "Uniform Disribution" << std::endl;
 	PrintDistribution(HistU);
+	std::cout << "Normal Disribution" << std::endl;
 	PrintDistribution(HistN);
+	std::cout << "Random Disribution" << std::endl;
 	PrintDistribution(HistR);
-	// Seed with a real random value, if available
-
-
-	/*std::random_device r;
-	// Choose a random mean between 1 and 6
-	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniform_dist(1, 6);
-	int mean = uniform_dist(e1);
-	std::cout << "Randomly-chosen mean: " << mean << '\n';
-	// Generate a normal distribution around that mean
-	
-	std::map<int, int> hist;
-	for (int n = 0; n < 10000; ++n) {
-		++hist[std::round(normal_dist(e2))];
-	}
-	std::cout << "Normal distribution around " << mean << ":\n";
-	for (auto p : hist) {
-		std::cout << std::fixed << std::setprecision(1) << std::setw(2)
-			<< p.first << ' ' << std::string(p.second / 200, '*') << '\n';
-	}
-	*/
-
 }
