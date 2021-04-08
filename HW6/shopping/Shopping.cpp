@@ -14,6 +14,7 @@
 #include <map>
 #include <algorithm>
 #include <ctype.h>
+#include <numeric>
 using std::cout;
 using std::cin;
 struct Record {
@@ -42,6 +43,18 @@ void insert_item(std::map<std::string, Record> & store, std::string input)
 	store.at(item).units += num;
 }
 
+void remove_item(std::map<std::string, Record>& store, std::string input)
+{
+	std::string item;
+	cout << "Pleae enter the item your would like to remove: ";
+	cin >> item;
+	if (!(item == "bread" || item == "toast" || item == "garlic bread" || item == "bicuit" || item == "dough"))
+	{
+		cout << "Your item was not on the list" << std::endl;
+		return;
+	}
+	store.at(item).units = 0;
+}
 void print_cart( std::map<std::string, Record>& store)
 {
 	cout << "Items in cart are: " << std::endl;
@@ -50,6 +63,7 @@ void print_cart( std::map<std::string, Record>& store)
 
 
 int main()
+
 {
 	std::map<std::string, Record> store;
 	toast.unitPrice = 1;
@@ -62,13 +76,13 @@ int main()
 	store.emplace("garlic bread", garlic_bread);
 	store.emplace("biscuit", biscuit);
 	store.emplace("dough", dough);
-	std::string user_input; 
+	std::string user_input;
 	print_cart(store);
 
 	while (user_input != "checkout")
 	{
 		print_cart(store);
-		cout <<	"Please enter a command, \"add\" , \"remove\" , and \"checkout\" " << std::endl;
+		cout << "Please enter a command, \"add\" , \"remove\" , and \"checkout\" " << std::endl;
 		cin >> user_input;
 		for (auto& n : user_input)
 		{
@@ -78,16 +92,27 @@ int main()
 		{
 			insert_item(store, user_input);
 		}
-		else if(user_input.substr(0, 3) == "remove")
+		else if (user_input.substr(0, 6) == "remove")
 		{
-
+			remove_item(store, user_input);
 		}
-		else if(user_input != "checkout")
+		else if (user_input != "checkout")
 		{
-			cout << "Your input is invalid" << std::endl; 
+			cout << "Your input is invalid" << std::endl;
 		}
 	}
 
+	cout << "Your total is: ";
+	double total = 0;
+	for (auto n : store)
+	{
+		total += n.second.units * n.second.unitPrice; 
+	}
+	//I could not get the accumulate function to work, after about an hour and half of trying to figure it out, below is my best attempt. 
+	/*
+	int total = std::accumulate(store.begin(), store.end(), 0, [&](std::pair<std::string, Record> pair) {return pair.second.units * pair.second.unitPrice;});
+	cout << total << std::endl; 
+	*/ 
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
