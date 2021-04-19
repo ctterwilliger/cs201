@@ -48,7 +48,7 @@ int main()
 		}
 	}
 
-	// this won't handle comments
+	// this won't handle comments 
 	int xres, yres, maxval;
 	fin >> xres >> yres >> maxval;
 	if (!fin) {
