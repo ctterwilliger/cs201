@@ -48,13 +48,25 @@ int main()
 		}
 	}
 
-	// this won't handle comments 
+	// this handles comments
+	std::string comment = "";
+	do
+	{
+		fin >> comment;
+		if (comment.at(0) == '#')
+		{
+			cout << comment << std::endl;
+		}
+	} while (comment.at(0) == '#');
+
 	int xres, yres, maxval;
-	fin >> xres >> yres >> maxval;
+	xres = std::stoi(comment);
+	fin >> yres >> maxval;
 	if (!fin) {
 		cout << "Error reading stream" << std::endl;
 		exit(3);
 	}
+
 	cout << "Image size: " << xres << " x " << yres << std::endl;
 	cout << "Maxval = " << maxval << std::endl;
 
