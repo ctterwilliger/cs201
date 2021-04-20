@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* asciiart.ccp
 * cs201
 * Clifton Terwilliger
-* 03/00/2021
-* name
+* 04/19/2021
+* Takes reads a file and prints the it in a grascale text
 */
 
 #include <iostream>
