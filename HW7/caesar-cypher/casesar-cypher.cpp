@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* casesar-cypher.ccp
 * cs201
 * Clifton Terwilliger
-* 03/00/2021
-* name
+* 04/19/2021
+* simple casesar text transfermation.
 */
 
 #include <iostream>
@@ -11,6 +11,8 @@
 #include <sstream>
 using std::cout;
 using std::cin;
+
+//Changes letter by cypher letter
 void cypher_char(char & c, int cypher)
 {
 	if (islower(c))
@@ -28,6 +30,7 @@ int main()
 	std::string text;
 	int cypher = 0;
 	std::istringstream input; 
+	//run until END is inputed. 
 	do
 	{
 		for (auto& n : text)
