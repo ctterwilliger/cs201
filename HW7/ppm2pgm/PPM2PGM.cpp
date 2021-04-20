@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* PPM@PGM.ccp
 * cs201
 * Clifton Terwilliger
-* 03/00/2021
-* name
+* 04/19/2021
+* converts parrot.ppm to parrot.pgm
 */
 
 #include <iostream>
@@ -84,7 +84,6 @@ int main()
 	fout << maxval << "\n";
 
 	int y;
-	char values[] = "@@@###***+++--- ";
 	for (int j = 0; j < xres; j++) 
 	{
 		for (int i = 0; i < yres; i++)
@@ -99,18 +98,6 @@ int main()
 			// test
 			if (y < 0.0 || y >= 256.0) cout << "ERROR!!!!!!!!!!!" << std::endl;
 			fout << y << " ";
-			//    cout << r << " " << g << " " << b;
-			//    cout << " => " << y;
-			iy = (int)y;
-			// iy should be [0...255]
-			if (iy < 0 || iy > 255) cout << "ERROR!!!!!!!!!!!!!!" << std::endl;
-			//    cout << " => " << iy;
-			iy /= 16;
-			// iy should be [0...15]
-			if (iy < 0 || iy > 15) cout << "ERROR!!!!!!!!!!!!!!" << std::endl;
-			//    cout << " => " << iy << endl;
-			cout << values[iy];
-			if (i % 80 == 79) cout << std::endl;
 		}
 		fout << "\n";
 	}
