@@ -16,6 +16,16 @@ using std::vector;
 
 void vector_create(int i, std::vector<int>& num)
 {
+	num.resize(0);
+	if (i < 0)
+	{
+		num.push_back(1);
+	}
+	else
+	{
+		num.push_back(0);
+	}
+	i = std::abs(i);
 	while (i != 0)
 	{
 		num.push_back(i % digit_s);
@@ -24,7 +34,11 @@ void vector_create(int i, std::vector<int>& num)
 }
 void print_vector(const std::vector<int>& num)
 {
-	for (int i = num.size() - 1; i >= 0; i--)
+	if (num.at(0) == 1)
+	{
+		cout << "-";
+	}
+	for (int i = num.size() - 1; i >= 1; i--)
 	{
 		cout << num.at(i) << " ";
 	}
@@ -45,7 +59,7 @@ void add_vecctors(const std::vector<int>& num1, const std::vector<int>& num2, st
 int main()
 {
 	vector<int> num;
-	int i = 123456789;
+	int i = -123456789;
 	vector_create(i, num);
 	print_vector(num);
 	cout << std::endl; 
