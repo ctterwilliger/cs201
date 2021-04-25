@@ -28,6 +28,6 @@ void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vect
 
 void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result);
 
-
+void pow_vectors(const std::vector<int>& num1, int pow,  std::vector<int>& result);
 
 #endif

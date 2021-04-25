@@ -41,7 +41,7 @@ void print_vector(const std::vector<int>& num)
 	cout << std::setfill(' ');
 	if (num.size() == 2)
 	{
-		cout  << num.at(0) << std::endl; 
+		cout  << num.at(1) << std::endl; 
 	}
 	else if (num.size() == 1) {}
 	else
@@ -308,6 +308,7 @@ void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vec
 {
 	result.resize(0);
 	result.push_back(1);
+	int place_holder2; 
 	for (int i = 1; i < num2.size(); i++)
 	{
 		int place_holder = 0;
@@ -315,23 +316,50 @@ void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vec
 		{
 			if (result.size() < i + j)
 			{
-				result.push_back((num1.at(j) * num2.at(i) + place_holder) % digit_s);
-				place_holder = (num1.at(j) * num2.at(i) + place_holder) / digit_s;
+				place_holder2 = num1.at(j) * num2.at(i) + place_holder;
+				result.push_back(place_holder2 % digit_s);
+				place_holder = (place_holder2) / digit_s;
+				
 			}
 			else
 			{
-				result.at(i + j -1) = (num1.at(j) * num2.at(i) + place_holder + result.at(i + j - 1)) % digit_s;
-				place_holder = (num1.at(j) * num2.at(i) + result.at(i + j - 1) + place_holder) / digit_s;
+				place_holder2 = num1.at(j) * num2.at(i) + place_holder + result.at(i + j - 1);
+				result.at(i + j - 1) = (place_holder2) % digit_s;
+				place_holder = (place_holder2) / digit_s;
+
 			}
 			
 		}
+		if (place_holder != 0)
+		{
+			result.push_back(place_holder);
+		}
+
+
 	}
-	if (num1.at(0) == num2.at(0))
+	if (num1.at(0) != num2.at(0))
 	{
 		result.at(0) = -1;
 	}
 }
 
+void pow_vectors(const std::vector<int>& num1, int pow, std::vector<int>& result)
+{
+	result.resize(0);
+	result.push_back(1);
+	std:vector<int> midpoint_vector{ 1,1 };
+	for(int i = 0; i < pow; i++)
+	{
+		mult_vectors(num1, midpoint_vector, result);
+		midpoint_vector.resize(0);
+		for (int j = 0; j < result.size(); j++)
+		{
+			midpoint_vector.push_back(result.at(j));
+		}
+	}
+	vector_create(1, midpoint_vector);
+	
+}
 
 
 
