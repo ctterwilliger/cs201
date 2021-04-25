@@ -24,7 +24,7 @@ void add_pos_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 
 void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result);
 
-
+void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result);
 
 
 

@@ -40,7 +40,7 @@ void print_vector(const std::vector<int>& num)
 {
 	if (num.size() == 2)
 	{
-		cout << std::setw(3) << num.at(0) << std::endl; 
+		cout  << num.at(0) << std::endl; 
 	}
 	else if (num.size() == 1) {}
 	else
@@ -91,91 +91,145 @@ void add_pos_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 	}
 
 }
-void add_pos_neg_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
-{
 
-	size_t min_size = std::min(num1.size(), num2.size());
-	int place_holder = 0;
-	for (int i = 1; i < min_size; i++)
-	{
-		result.push_back((num1.at(i) - num2.at(i) + place_holder) % digit_s);
-		place_holder = (num1.at(i) - num2.at(i) + place_holder) / digit_s;
-	}
-	if (num1.size() < num2.size())
-	{
-		size_t size = num2.size();
-		for (int i = min_size; i < size; i++)
-		{
-			result.push_back((-num2.at(i) + place_holder) % digit_s);
-			place_holder = (-num2.at(i) + place_holder) / digit_s;
-		}
-	}
-	else if (num1.size() > num2.size())
-	{
-		size_t size = num1.size();
-		for (int i = min_size; i < size; i++)
-		{
-			result.push_back((num1.at(i) + place_holder) % digit_s);
-			place_holder = (num1.at(i) + place_holder) / digit_s;
-		}
-	}
-	else if (place_holder != 0)
-	{
-		result.push_back(place_holder);
-	}
-
-}
 void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
 	size_t min_size = std::min(num1.size(), num2.size());
 	int place_holder = 0;
 	int place_holder2 = 0;
-	for (int i = 1; i < min_size; i++)
-	{
-		place_holder2 = -num1.at(i) + num2.at(i) + place_holder;
-		if (place_holder2 < 0)
-		{
-			result.push_back((1000 + place_holder2) % digit_s);
-			place_holder = (place_holder2) / digit_s;
-		}
-		else
-		{
-			result.push_back((place_holder2) % digit_s);
-			place_holder = (place_holder2) / digit_s;
-		}
-		
+	// 1 for num1 being bigger, -1 for num2 being bigger, 0 for equal
+	int size_bool = 0;
 	if (num1.size() < num2.size())
 	{
-		size_t size = num2.size();
-		for (int i = min_size; i < size; i++)
-		{
-			result.push_back((num2.at(i) + place_holder) % digit_s);
-			place_holder = (num2.at(i) + place_holder) / digit_s;
-		}
+		size_bool = -1;
+		cout << "test";
 	}
 	else if (num1.size() > num2.size())
 	{
-		size_t size = num1.size();
-		for (int i = min_size; i < size; i++)
+		size_bool = 1; 
+		
+	}
+	else
+	{
+		for(int j = min_size-1; j > 1; j--)
+		{
+			if (num1.at(j) < num2.at(j))
+			{
+				size_bool = -1;
+				break;
+			}
+			else if (num1.at(j) > num2.at(j))
+			{
+				size_bool = 1;
+				break; 
+			}
+		}
+	}
+	if (size_bool == 0)
+	{
+		result.resize(0);
+		result.push_back(1);
+	}
+	if (size_bool==1)
+	{
+		
+		for (int i = 1; i < min_size; i++)
+		{
+			place_holder2 = num1.at(i) - num2.at(i) + place_holder;
+			if (place_holder2 < 0)
+			{
+				result.push_back((1000 + place_holder2) % digit_s);
+				place_holder = -1;
+			}
+			else
+			{
+				result.push_back((place_holder2) % digit_s);
+				place_holder = 0;
+			}
+		}
+		if (num1.size() < num2.size())
+		{
+			size_t size = num2.size();
+			for (int i = min_size; i < size; i++)
+			{
+				result.push_back((num2.at(i) + place_holder) % digit_s);
+				place_holder = 0;
+			}
+		}
+		else if (num1.size() > num2.size())
+		{
+			size_t size = num1.size();
+			for (int i = min_size; i < size; i++)
+			{
+				place_holder2 = num1.at(i) + place_holder;
+				if (place_holder2 < 0)
+				{
+					result.push_back((1000 + place_holder2) % digit_s);
+					place_holder = 0;
+				}
+				else
+				{
+					result.push_back((place_holder2) % digit_s);
+					place_holder = 0;
+				}
+			}
+		}
+		result.at(0) = -1;
+	}
+	else
+	{
+		for (int i = 1; i < min_size; i++)
 		{
 			place_holder2 = -num1.at(i) + num2.at(i) + place_holder;
 			if (place_holder2 < 0)
 			{
 				result.push_back((1000 + place_holder2) % digit_s);
+				place_holder = -1;
 			}
 			else
 			{
 				result.push_back((place_holder2) % digit_s);
+				place_holder = 0;
 			}
-			place_holder = (-num1.at(i) + place_holder) / digit_s;
 		}
+		if (num1.size() < num2.size())
+		{
+			size_t size = num2.size();
+			for (int i = min_size; i < size; i++)
+			{
+				result.push_back((num2.at(i) + place_holder) % digit_s);
+				place_holder = 0;
+			}
+		}
+		else if (num1.size() > num2.size())
+		{
+			size_t size = num1.size();
+			for (int i = min_size; i < size; i++)
+			{
+				place_holder2 = -num1.at(i) + place_holder;
+				if (place_holder2 < 0)
+				{
+					result.push_back((1000 + place_holder2) % digit_s);
+				}
+				else
+				{
+					result.push_back((place_holder2) % digit_s);
+				}
+				place_holder = -1;
+			}
+		}
+		else if (place_holder != 0)
+		{
+			result.push_back(place_holder);
+		}
+		result.at(0) = 1;
 	}
-	else if (place_holder != 0)
-	{
-		result.push_back(place_holder);
-	}
+	
 
 }
+
+
+
 void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
 	size_t min_size = std::min(num1.size(), num2.size());
@@ -209,10 +263,10 @@ void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& nu
 	}
 	result.at(0) = -1; 
 
+
 }
 
 // This takes up more space than a generalized add function. but the slight alterations make it faster than generalization, especially over a million+ elelemnts 
-
 void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
 	result.resize(0);
@@ -231,9 +285,22 @@ void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std
 	}
 	else if (num1.at(0) == 1 && num2.at(0) == -1)
 	{
-		add_pos_neg_vector(num1, num2, result);
+		add_neg_pos_vector(num2, num1, result);
 	}
-	
+	for (int i = result.size() - 1; i >= 1; i--)
+	{
+		if (result.at(i) != 0)
+		{
+			break;
+		}
+		result.resize(i);
+	}
+}
+
+void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result)
+{
+	num2.at(0) = -num2.at(0);
+	add_vectors(num1, num2, result);
 }
 
 
