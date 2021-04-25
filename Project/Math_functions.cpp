@@ -38,6 +38,7 @@ void vector_create(int i, std::vector<int>& num)
 }
 void print_vector(const std::vector<int>& num)
 {
+	cout << std::setfill(' ');
 	if (num.size() == 2)
 	{
 		cout  << num.at(0) << std::endl; 
@@ -303,6 +304,33 @@ void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vect
 	add_vectors(num1, num2, result);
 }
 
+void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result)
+{
+	result.resize(0);
+	result.push_back(1);
+	for (int i = 1; i < num2.size(); i++)
+	{
+		int place_holder = 0;
+		for (int j = 1; j < num1.size(); j++)
+		{
+			if (result.size() < i + j)
+			{
+				result.push_back((num1.at(j) * num2.at(i) + place_holder) % digit_s);
+				place_holder = (num1.at(j) * num2.at(i) + place_holder) / digit_s;
+			}
+			else
+			{
+				result.at(i + j -1) = (num1.at(j) * num2.at(i) + place_holder + result.at(i + j - 1)) % digit_s;
+				place_holder = (num1.at(j) * num2.at(i) + result.at(i + j - 1) + place_holder) / digit_s;
+			}
+			
+		}
+	}
+	if (num1.at(0) == num2.at(0))
+	{
+		result.at(0) = -1;
+	}
+}
 
 
 

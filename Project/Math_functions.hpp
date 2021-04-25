@@ -26,7 +26,7 @@ void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std
 
 void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result);
 
-
+void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result);
 
 
 
