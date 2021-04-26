@@ -113,7 +113,7 @@ void RGBImage::writePGMFile(string outfile)
         cout << "Error creating file" << std::endl;
         exit(4);
     }
-    fout << "p5" << "\n";
+    fout << "P2" << "\n";
     fout << _xres << " " << _yres << "\n";
     fout << _maxval << "\n";
     int y;
@@ -137,12 +137,10 @@ void RGBImage::writePGMFile(string outfile)
 }
 int main()
 {
-    cout << "Program to convert a ppm to ascii art" << endl;
+    cout << "Program to convert a ppm to pgm" << endl;
 
     RGBImage ppm("parrot.ppm");
-    ppm.toASCII();
     ppm.writePGMFile("newparrot.pgm");
-    
     cout << "Program finished" << endl;
 }
 
