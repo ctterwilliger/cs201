@@ -60,7 +60,7 @@ void mult_vectors(const std::vector<int>& num1, const std::vector<int>& num2, st
 void pow_vectors(const std::vector<int>& num1, int pow,  std::vector<int>& result);
 
 // add_vectors
-// takes two vectors inputs and dives thems outputing it to result and remander
+// takes two vectors inputs(second one being non 0) and dives thems outputing it to result and remander
 //
 // sample usage:
 //	add_vector(num1, num2, result, remander);

@@ -18,6 +18,7 @@ using std::vector;
 
 int main()
 {
+	//initates varibles
 	vector<int> num;
 	vector<int> num2;
 	vector<int> result;
@@ -26,6 +27,8 @@ int main()
 		<< "Possible operations are ^, *, +, -, and / " << std::endl;
 	int input;
 	char operation;
+
+	//runs until broken by 0 inputed to user
 	while (true)
 	{
 		cout << "Please enter integer 1(0 or non int to end): ";
@@ -38,9 +41,10 @@ int main()
 		{
 			vector_create(input, num);
 		}
-
+		
 		cout << "Please enter an operations(^, *, +, - and /): ";
 		cin >> operation;
+		//switches based on operation
 		switch (operation) {
 		case 94: //^
 			cout << "Please enter positive integer 2: ";
@@ -59,6 +63,7 @@ int main()
 			cin >> input;
 			vector_create(input, num2);
 			mult_vectors(num, num2, result);
+			cout << "Product is: ";
 			print_vector(result);
 			break;
 		case 43: // +
@@ -66,6 +71,7 @@ int main()
 			cin >> input;
 			vector_create(input, num2);
 			add_vectors(num, num2, result);
+			cout << "Sum is: ";
 			print_vector(result);
 			break;
 		case 45: // -
@@ -73,15 +79,26 @@ int main()
 			cin >> input;
 			vector_create(input, num2);
 			sub_vectors(num, num2, result);
+			cout << "Difference is: "; 
 			print_vector(result);
 			break;
 		case 47: // /
-			cout << "Please enter integer 2: ";
+			cout << "Please enter integer (non-zero)2: ";
 			cin >> input;
+			while (input == 0)
+			{
+				cout << "Please enter a non-zero integer: ";
+				cin >> input;
+			}
 			vector_create(input, num2);
 			divide_vectors(num, num2, result, remander);
+			cout << "Quotient is: ";
 			print_vector(result);
+			cout << "Remander is: ";
 			print_vector(remander);
+			break;
+		default:
+			cout << "Error invalid input" << std::endl; 
 			break;
 		}
 

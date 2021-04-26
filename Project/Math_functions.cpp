@@ -96,6 +96,7 @@ void add_pos_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 			place_holder = (num1.at(i) + place_holder) / digit_s;
 		}
 	}
+	// if equivelent moves carries over place_holder
 	else if (place_holder != 0)
 	{
 		result.push_back(place_holder);
@@ -197,6 +198,7 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 	//num2 is larger
 	else
 	{
+		//these are similar to add_pos_pos_vectors
 		for (int i = 1; i < min_size; i++)
 		{
 			place_holder2 = -num1.at(i) + num2.at(i) + place_holder;
@@ -299,7 +301,7 @@ void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& nu
 // This functions is a generalization of all the add functions to make a true add function, this allows the use of the specialized functions in the other functions
 void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
-	//controls based on bit signs
+	//controls based on integer signs
 	result.resize(0);
 	result.push_back(1);
 	if (num1.at(0) == 1 && num2.at(0) == 1)
@@ -341,6 +343,7 @@ void mult_vectors(const std::vector<int>& num1, const std::vector<int>& num2, st
 		//multiplies element j * i then adds to result
 		for (int j = 1; j < num1.size(); j++)
 		{
+			//pushes back vector is postition does exist, if not adds to result
 			if (result.size() < i + j)
 			{
 				place_holder2 = num1.at(j) * num2.at(i) + place_holder;
@@ -364,6 +367,7 @@ void mult_vectors(const std::vector<int>& num1, const std::vector<int>& num2, st
 
 
 	}
+	//creates sign based on orignal bits
 	if (num1.at(0) != num2.at(0))
 	{
 		result.at(0) = -1;
@@ -390,9 +394,14 @@ void pow_vectors(const std::vector<int>& num1, int pow, std::vector<int>& result
 	
 }
 
-//subtracts until value is the oposite sign of origanal value and counts how many times 
+//subtracts until value is the oposite sign of origanal value and counts how many times (WARNIGN DOES NOT EXCEPT 0 as Divisor)
 void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2, std::vector<int>& result, std::vector<int>& remander)
 {
+	if (num2.size() == 2 && num2.at(1) == 0)
+	{
+		cout << "Error 0 divisor" <<std::endl;
+		exit(1);
+	}
 	result.resize(0);
 	result.push_back(1);
 	remander.resize(0);
