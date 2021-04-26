@@ -1,9 +1,9 @@
 /**
-* file.ccp
+* math_functions.ccp
 * cs201
 * Clifton Terwilliger
-* 03/00/2021
-* name
+* 04/25/2021
+* calculation functions for vector of ints
 */
 #include <vector>
 #include <iostream>
@@ -17,7 +17,7 @@ using std::cin;
 using std::vector;
 
 
-
+// creates a vector with an int, using vector.at(0) as the sign for positive and negative
 void vector_create(int i, std::vector<int>& num)
 {
 	num.resize(0);
@@ -36,9 +36,11 @@ void vector_create(int i, std::vector<int>& num)
 		i = i / digit_s;
 	}
 }
+// prints a vector that uses standard
 void print_vector(const std::vector<int>& num)
 {
 	cout << std::setfill(' ');
+	//checks for size and handles acordingly
 	if (num.size() == 2)
 	{
 		cout  << num.at(1) << std::endl; 
@@ -62,8 +64,11 @@ void print_vector(const std::vector<int>& num)
 	}
 }
 
+
+//simply adds two positive vectors
 void add_pos_pos_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
+	// adds vectors until it made the min size of both vectors
 	size_t min_size = std::min(num1.size(), num2.size());
 	int place_holder = 0;
 	for (int i = 1; i < min_size; i++)
@@ -71,6 +76,8 @@ void add_pos_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 		result.push_back((num1.at(i) + num2.at(i) + place_holder) % digit_s);
 		place_holder = (num1.at(i) + num2.at(i) + place_holder) / digit_s;
 	}
+
+	// checks which vector is bigger and then iterate through it adding the placeholder just in case it overflows from
 	if (num1.size() < num2.size())
 	{
 		size_t size = num2.size();
@@ -105,6 +112,7 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 	int place_holder2 = 0;
 	// 1 for num1 being bigger, -1 for num2 being bigger, 0 for equal
 	int size_bool = 0;
+	//checks which number has a larger absolute value
 	if (num1.size() < num2.size())
 	{
 		size_bool = -1;
@@ -131,6 +139,8 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 			}
 		}
 	}
+
+	// adds based on which one is larger
 	if (size_bool == 0)
 	{
 		result.resize(0);
@@ -243,7 +253,7 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 }
 
 
-
+// same function as add pos_pos but makes it negative at the end
 void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
 	size_t min_size = std::min(num1.size(), num2.size());
@@ -281,6 +291,7 @@ void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& nu
 }
 
 // This takes up more space than a generalized add function. but the slight alterations make it faster than generalization, especially over a million+ elelemnts 
+// This functions is a generalization of all the add functions to make a true add function, this allows the use of the specialized functions in the other functions
 void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
 	result.resize(0);
@@ -304,13 +315,16 @@ void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std
 	
 }
 
-void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result)
+//this runs the add function, but with num2 being negative
+void sub_vectors(const std::vector<int>& num1, std::vector<int> num2 , std::vector<int>& result)
 {
 	num2.at(0) = -num2.at(0);
 	add_vectors(num1, num2, result);
 }
 
-void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result)
+
+//multplies two vectors
+void mult_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
 	result.resize(0);
 	result.push_back(1);
@@ -318,6 +332,7 @@ void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vec
 	for (int i = 1; i < num2.size(); i++)
 	{
 		int place_holder = 0;
+		//multiplies element j * i then adds to result
 		for (int j = 1; j < num1.size(); j++)
 		{
 			if (result.size() < i + j)
@@ -349,6 +364,7 @@ void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vec
 	}
 }
 
+// runs the multiply function pow number of times
 void pow_vectors(const std::vector<int>& num1, int pow, std::vector<int>& result)
 {
 	result.resize(0);
@@ -362,13 +378,13 @@ void pow_vectors(const std::vector<int>& num1, int pow, std::vector<int>& result
 		{
 			midpoint_vector.push_back(result.at(j));
 		}
-		cout << i << std::endl; 
 	}
 	vector_create(1, midpoint_vector);
 
 	
 }
 
+//subtracts until value is the oposite sign of origanal value and counts how many times 
 void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2, std::vector<int>& result, std::vector<int>& remander)
 {
 	result.resize(0);
@@ -409,6 +425,10 @@ void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2,
 	for (auto n : place_holder_vector)
 	{
 		result.push_back(n);
+	}
+	if (num1.at(0) != num2.at(0))
+	{
+		result.at(0) = -1;
 	}
 	
 
