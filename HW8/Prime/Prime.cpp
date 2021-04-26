@@ -5,20 +5,21 @@ using std::cin;
 
 int main()
 {
-	long long total = 4;
-	int place_holder;
-	for (long long i = 2; i < 9223372036854775807; i++)
+	long long total = 1;
+	bool place_holder;
+	cout << "2 ";
+	for (long long i = 3; i < 9223372036854775807; i += 2)
 	{
-		place_holder = 0;
-		for (long long j = 3; j < i; j = j++)
+		place_holder = true;
+		for (long long j = 3; j < i; j = j +=2)
 		{
 			if (i % j == 0)
 			{
-				place_holder = 1;
-				j = i;
+				place_holder = false;
+				break;
 			}
 		}
-		if (place_holder == 0)
+		if (place_holder)
 		{
 			cout << i << " ";
 			total++;
