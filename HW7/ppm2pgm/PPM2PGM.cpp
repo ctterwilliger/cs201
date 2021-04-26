@@ -79,7 +79,7 @@ int main()
 		cout << "Error creating file" << std::endl;
 		exit(4);
 	}
-	fout << "p5" << "\n"; 
+	fout << "P2" << "\n"; 
 	fout << xres << " " << yres << "\n"; 
 	fout << maxval << "\n";
 
