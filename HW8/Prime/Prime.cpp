@@ -58,7 +58,7 @@ int main()
 	}
 	end_point++;
 	// prints the up to 2, 3, 5, 7 which are know primes
-	for (long long i = 2; i < end_point && i < 7; i ++)
+	for (long long i = 2; i < end_point && i <= 7; i ++)
 	{
 		place_holder = true;
 		for (long long j = 3; j < i; j ++ )
@@ -86,6 +86,29 @@ int main()
 			cout << i << " ";
 				total++;
 		}
+		stop += 2;
+		i += 2;
+		if (is_prime(i, stop))
+		{
+			cout << i << " ";
+			total++;
+		}
+		stop += 4;
+		i += 4;
+		if (is_prime(i, stop))
+		{
+			cout << i << " ";
+			total++;
+		}
+		stop += 2;
+		i += 2;
+		if (is_prime(i, stop))
+		{
+			cout << i << " ";
+			total++;
+		}
+
+
 	}
 	cout << std::endl <<"Total: " << total;
 }
