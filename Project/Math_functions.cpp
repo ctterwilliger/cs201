@@ -43,7 +43,10 @@ void print_vector(const std::vector<int>& num)
 	{
 		cout  << num.at(1) << std::endl; 
 	}
-	else if (num.size() == 1) {}
+	else if (num.size() == 1)
+	{
+		cout << '0' << std::endl;
+	}
 	else
 	{
 		if (num.at(0) == -1)
@@ -95,6 +98,8 @@ void add_pos_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 
 void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
+	result.resize(0);
+	result.push_back(1);
 	size_t min_size = std::min(num1.size(), num2.size());
 	int place_holder = 0;
 	int place_holder2 = 0;
@@ -224,8 +229,16 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 			result.push_back(place_holder);
 		}
 		result.at(0) = 1;
+
 	}
-	
+	for (int i = result.size() - 1; i >= 1; i--)
+	{
+		if (result.at(i) != 0)
+		{
+			break;
+		}
+		result.resize(i);
+	}
 
 }
 
@@ -288,14 +301,7 @@ void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std
 	{
 		add_neg_pos_vector(num2, num1, result);
 	}
-	for (int i = result.size() - 1; i >= 1; i--)
-	{
-		if (result.at(i) != 0)
-		{
-			break;
-		}
-		result.resize(i);
-	}
+	
 }
 
 void sub_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vector<int>& result)
@@ -356,11 +362,55 @@ void pow_vectors(const std::vector<int>& num1, int pow, std::vector<int>& result
 		{
 			midpoint_vector.push_back(result.at(j));
 		}
+		cout << i << std::endl; 
 	}
 	vector_create(1, midpoint_vector);
+
 	
 }
 
+void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2, std::vector<int>& result, std::vector<int>& remander)
+{
+	result.resize(0);
+	result.push_back(1);
+	remander.resize(0);
+	
+	std::vector<int> place_holder_vector;
+	for (auto n : num1)
+	{
+		remander.push_back(n);
+	}
+	remander.at(0) = 1;
+	std::vector<int> one;
+	vector_create(1, one);
+	while (remander.at(0) == 1)
+	{
+		add_vectors(result, one,place_holder_vector);
+		result.resize(0);
+		for (auto n : place_holder_vector)
+	{
+		result.push_back(n);
+	}
+		add_neg_pos_vector( num2, remander, place_holder_vector);
+		remander.resize(0);
+		for (auto n : place_holder_vector)
+		{
+			remander.push_back(n);
+		}
+	}
+	add_neg_pos_vector(remander, num2, place_holder_vector);
+	remander.resize(0);
+	for (auto n : place_holder_vector)
+	{
+		remander.push_back(n);
+	}
+	add_neg_pos_vector( one, result, place_holder_vector);
+	result.resize(0);
+	for (auto n : place_holder_vector)
+	{
+		result.push_back(n);
+	}
+	
 
-
+}
 

@@ -30,4 +30,5 @@ void mult_vectors(const std::vector<int>& num1, std::vector<int>& num2, std::vec
 
 void pow_vectors(const std::vector<int>& num1, int pow,  std::vector<int>& result);
 
+void divide_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result, std::vector<int>& remander);
 #endif

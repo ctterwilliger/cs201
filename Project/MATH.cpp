@@ -20,16 +20,20 @@ int main()
 	vector<int> num;
 	vector<int> num2;
 	vector<int> result;
-	int i = 2;
-	int j = -4321;
+	vector<int> remander; 
+	int i = -1234;
+	int j = 4321;
 	vector_create(i, num);
 	vector_create(j, num2);
 	print_vector(num);
 	print_vector(num2);
 	mult_vectors(num, num2, result);
 	print_vector(result);
-	pow_vectors(num, 10, result);
+	divide_vectors(num, num2, result, remander);
 	print_vector(result);
+	cout << "test2";
+	print_vector(remander);
+	cout << std::endl;
 	//Exit code
 	cout << "Press ENTER to quit ";
 	while (cin.get() != '\n');
