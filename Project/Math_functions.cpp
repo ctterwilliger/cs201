@@ -141,11 +141,13 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 	}
 
 	// adds based on which one is larger
+	// if equivelent
 	if (size_bool == 0)
 	{
 		result.resize(0);
 		result.push_back(1);
 	}
+	//num 2 is larger
 	if (size_bool==1)
 	{
 		
@@ -192,6 +194,7 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 		}
 		result.at(0) = -1;
 	}
+	//num2 is larger
 	else
 	{
 		for (int i = 1; i < min_size; i++)
@@ -241,6 +244,7 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 		result.at(0) = 1;
 
 	}
+	//removes 0s at front of vector tofix logic erros
 	for (int i = result.size() - 1; i >= 1; i--)
 	{
 		if (result.at(i) != 0)
@@ -256,6 +260,7 @@ void add_neg_pos_vector(const std::vector<int>& num1, const std::vector<int>& nu
 // same function as add pos_pos but makes it negative at the end
 void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
+	// same codes as add_pos_pos_vectors but flips the sign bit
 	size_t min_size = std::min(num1.size(), num2.size());
 	int place_holder = 0;
 	for (int i = 1; i < min_size; i++)
@@ -294,6 +299,7 @@ void add_neg_neg_vector(const std::vector<int>& num1, const std::vector<int>& nu
 // This functions is a generalization of all the add functions to make a true add function, this allows the use of the specialized functions in the other functions
 void add_vectors(const std::vector<int>& num1, const std::vector<int>& num2, std::vector<int>& result)
 {
+	//controls based on bit signs
 	result.resize(0);
 	result.push_back(1);
 	if (num1.at(0) == 1 && num2.at(0) == 1)
@@ -399,6 +405,7 @@ void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2,
 	remander.at(0) = 1;
 	std::vector<int> one;
 	vector_create(1, one);
+	// subtracts until negative
 	while (remander.at(0) == 1)
 	{
 		add_vectors(result, one,place_holder_vector);
@@ -414,6 +421,7 @@ void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2,
 			remander.push_back(n);
 		}
 	}
+	//goes back one step
 	add_neg_pos_vector(remander, num2, place_holder_vector);
 	remander.resize(0);
 	for (auto n : place_holder_vector)
@@ -426,6 +434,8 @@ void divide_vectors(const std::vector<int>& num1, const std::vector<int> & num2,
 	{
 		result.push_back(n);
 	}
+
+	//corrects sign
 	if (num1.at(0) != num2.at(0))
 	{
 		result.at(0) = -1;
