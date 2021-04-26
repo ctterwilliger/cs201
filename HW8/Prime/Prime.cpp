@@ -1,8 +1,46 @@
 #include <iostream>
 #include <math.h>
-#include <string>
-using namespace std;
+using std::cout;
 using std::cin;
+
+bool is_prime(long long num, long long stop)
+{
+	if (num % 3 == 0)
+	{
+		return false;
+	}
+	if (num % 5 == 0)
+	{
+		return false;
+	}
+	if (num % 7 == 0)
+	{
+		return false;
+	}
+	for (long long j = 11; j < stop; j += 2)
+	{
+		if (num % j == 0)
+		{
+			return false;
+		}
+		j += 2;
+		if (num % j == 0)
+		{
+			return false;
+		}
+		j += 4;
+		if (num % j == 0)
+		{
+			return false;
+		}
+		j += 2;
+		if(num % j == 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
 
 int main()
 {
@@ -37,22 +75,16 @@ int main()
 			total++;
 		}
 	}
-	
+
+
+	long long stop;
 	for (long long i = 11; i < end_point; i += 2)
 	{
-		place_holder = true;
-		for (long long j = 3; j < i; j +=2)
-		{
-			if (i % j == 0)
-			{
-				place_holder = false;
-				break;
-			}
-		}
-		if (place_holder)
+		stop = sqrt(i) + 1;
+		if (is_prime(i, stop))
 		{
 			cout << i << " ";
-			total++;
+				total++;
 		}
 	}
 	cout << std::endl <<"Total: " << total;
